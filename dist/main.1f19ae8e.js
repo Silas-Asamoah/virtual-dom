@@ -104,15 +104,56 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   // Override the current require with this new one
   return newRequire;
-})({"main.js":[function(require,module,exports) {
-var vApp = {
-  tagName: 'div',
+})({"vdom/createElement.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _default = function _default(tagName) {
+  var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+      _ref$attrs = _ref.attrs,
+      attrs = _ref$attrs === void 0 ? {} : _ref$attrs,
+      _ref$children = _ref.children,
+      children = _ref$children === void 0 ? [] : _ref$children;
+
+  return {
+    tagName: tagName,
+    attrs: attrs,
+    children: children
+  };
+};
+
+exports.default = _default;
+},{}],"main.js":[function(require,module,exports) {
+"use strict";
+
+var _createElement = _interopRequireDefault(require("./vdom/createElement"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var vApp = (0, _createElement.default)('div', {
   attrs: {
     id: 'app'
-  }
+  },
+  children: [(0, _createElement.default)('img', {
+    attrs: {
+      src: 'https://media.giphy.com/media/cuPm4p4pClZVC/giphy.gif'
+    }
+  })]
+});
+/*const vApp = {
+    tagName: 'div',
+    attrs: {
+        id: 'app',
+    },
 };
+*/
+
 console.log(vApp);
-},{}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./vdom/createElement":"vdom/createElement.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -139,7 +180,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44059" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44305" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
