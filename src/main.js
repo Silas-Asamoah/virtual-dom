@@ -1,4 +1,5 @@
 import createElement from './vdom/createElement';
+import render from './vdom/render';
 
 
 const vApp = createElement('div', {
@@ -6,7 +7,7 @@ const vApp = createElement('div', {
         id: 'app',
     },
     children: [
-        'Hello world'. //represents TextNode
+        'Hello world', //represents TextNode
         createElement('img', {
             attrs: {
                 src: 'https://media.giphy.com/media/cuPm4p4pClZVC/giphy.gif',
@@ -22,7 +23,9 @@ const vApp = createElement('div', {
     },
 };
 */
-console.log(vApp);
+const $app = render(vApp);
+
+console.log($app);
 
 
 
