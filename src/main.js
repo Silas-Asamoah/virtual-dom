@@ -34,7 +34,15 @@ let $rootEl = mount($app, document.getElementById('app'));
 
 setInterval(() => {
     count++;
-    $rootEl = mount(render(createVApp(count)), $rootEl);
+    const vNewApp = creativeVApp(count);
+    const patch = diff(vApp, vNewApp);
+
+
+    //$rootEl = mount(render(createVApp(count)), $rootEl);
+
+    $rootEl = patch($rootEl);
+    
+    vApp = vNewApp;
 }, 1000);
 
 //console.log($app);
