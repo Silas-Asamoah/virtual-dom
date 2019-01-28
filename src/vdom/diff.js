@@ -1,5 +1,16 @@
 import render from './render';
 
+
+
+const zip = (xs, ys) => {
+    const zipped = [];
+    for (let i = 0; i < Math.min(xs.length, ys.length); i++){
+        zipped.push(xs[i], ys[i]);
+    }
+
+    return zipped;
+};
+
 const diffAttrs = (oldAttrs, newAttrs) => {
     const patches = [];
 
@@ -24,6 +35,9 @@ const diffAttrs = (oldAttrs, newAttrs) => {
 
 
     return $node => {
+        for (const patch of patches){
+            patch($node);
+        }
         return $node;
     };
 };
