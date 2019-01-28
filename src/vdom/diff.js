@@ -1,5 +1,18 @@
 import render from './render';
 
+const diffAttrs = (oldAttrs, newAttrs) => {
+    return $node => {
+        return $node;
+    };
+};
+
+
+const diffChildren = (oldVChildren, newVChildren) => {
+    return $node => {
+        return $node;
+    };
+};
+
 const diff = (oldVTree, newVTree) => {
     //assume oldVTree is not defined
     if (newVTree === undefined){
@@ -35,6 +48,16 @@ const diff = (oldVTree, newVTree) => {
             return $newNode;
         };
     }
+
+
+    const patchAttrs = diffAttrs(oldVTree.attrs, newVTree.attrs);
+    const patchChildren = diffChildren(oldVTree.children, newVTree.children);
+
+    return $node => {
+        patchAttrs($node);
+        patchChildren($node);
+        return $node;
+    };
 };
 
 export default diff;
