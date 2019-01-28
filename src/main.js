@@ -1,6 +1,7 @@
 import createElement from './vdom/createElement';
 import render from './vdom/render';
 import mount from './vdom/mount';
+import diff from './vdom/diff';
 
 
 const createVApp = count => createElement('div', {
@@ -34,7 +35,7 @@ let $rootEl = mount($app, document.getElementById('app'));
 
 setInterval(() => {
     count++;
-    const vNewApp = creativeVApp(count);
+    const vNewApp = createVApp(count);
     const patch = diff(vApp, vNewApp);
 
 
