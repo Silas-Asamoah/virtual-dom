@@ -15,7 +15,7 @@ const diffAttrs = (oldAttrs, newAttrs) => {
     const patches = [];
 
     //setting newAttrs
-    for (const [k, v] of Object.entires(newAttrs)){
+    for (const [k, v] of Object.entries(newAttrs)){
         patches.push($node => {
             $node.setAttribute(k, v);
             return $node
@@ -47,12 +47,12 @@ const diffChildren = (oldVChildren, newVChildren) => {
     const childPatches = [];
 
     oldVChildren.forEach((oldVChild, i) => {
-        childPatches,push(diff(oldVChild, newVChildren[i]));        
+        childPatches.push(diff(oldVChild, newVChildren[i]));        
     });
 
 
     const additionalPatches = [];
-    for (const additionalVChild of newVChildren.slic(oldVChildren.length)){
+    for (const additionalVChild of newVChildren.slice(oldVChildren.length)){
         additionalPatches.push($node => {
             $node.appendChild(render(newVChildren));
             return $node;
@@ -93,7 +93,7 @@ const diff = (oldVTree, newVTree) => {
             //1. both trees are string and they have different values
             //2. one of the trees is text node and the other one is elem node
             // Either case render(newVTree)
-            return $Node => {
+            return $node => {
                 const $newNode = render(newVTree);
                 $node.replaceWith($newNode);
                 return $newNode;

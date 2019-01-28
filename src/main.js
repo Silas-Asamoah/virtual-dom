@@ -38,7 +38,7 @@ let $rootEl = mount($app, document.getElementById('app'));
 setInterval(() => {
     //count++;
     //const 
-    count = Math.floor(math.random() * 10);
+    count = Math.floor(Math.random() * 10);
     const vNewApp = createVApp(count);
     const patch = diff(vApp, vNewApp);
 

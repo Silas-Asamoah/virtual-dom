@@ -260,40 +260,23 @@ var zip = function zip(xs, ys) {
 var diffAttrs = function diffAttrs(oldAttrs, newAttrs) {
   var patches = []; //setting newAttrs
 
-  var _iteratorNormalCompletion = true;
-  var _didIteratorError = false;
-  var _iteratorError = undefined;
+  var _arr = Object.entries(newAttrs);
 
-  try {
-    var _loop2 = function _loop2() {
-      var _step$value = _slicedToArray(_step.value, 2),
-          k = _step$value[0],
-          v = _step$value[1];
+  var _loop2 = function _loop2() {
+    var _arr$_i = _slicedToArray(_arr[_i], 2),
+        k = _arr$_i[0],
+        v = _arr$_i[1];
 
-      patches.push(function ($node) {
-        $node.setAttribute(k, v);
-        return $node;
-      });
-    };
+    patches.push(function ($node) {
+      $node.setAttribute(k, v);
+      return $node;
+    });
+  };
 
-    for (var _iterator = Object.entires(newAttrs)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-      _loop2();
-    } // removing attrs
+  for (var _i = 0; _i < _arr.length; _i++) {
+    _loop2();
+  } // removing attrs
 
-  } catch (err) {
-    _didIteratorError = true;
-    _iteratorError = err;
-  } finally {
-    try {
-      if (!_iteratorNormalCompletion && _iterator.return != null) {
-        _iterator.return();
-      }
-    } finally {
-      if (_didIteratorError) {
-        throw _iteratorError;
-      }
-    }
-  }
 
   var _loop = function _loop(k) {
     if (!(k in newAttrs)) {
@@ -309,8 +292,8 @@ var diffAttrs = function diffAttrs(oldAttrs, newAttrs) {
   }
 
   return function ($node) {
-    for (var _i = 0; _i < patches.length; _i++) {
-      var patch = patches[_i];
+    for (var _i2 = 0; _i2 < patches.length; _i2++) {
+      var patch = patches[_i2];
       patch($node);
     } //return $node;
 
@@ -320,32 +303,32 @@ var diffAttrs = function diffAttrs(oldAttrs, newAttrs) {
 var diffChildren = function diffChildren(oldVChildren, newVChildren) {
   var childPatches = [];
   oldVChildren.forEach(function (oldVChild, i) {
-    childPatches, push(diff(oldVChild, newVChildren[i]));
+    childPatches.push(diff(oldVChild, newVChildren[i]));
   });
   var additionalPatches = [];
-  var _iteratorNormalCompletion2 = true;
-  var _didIteratorError2 = false;
-  var _iteratorError2 = undefined;
+  var _iteratorNormalCompletion = true;
+  var _didIteratorError = false;
+  var _iteratorError = undefined;
 
   try {
-    for (var _iterator2 = newVChildren.slic(oldVChildren.length)[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-      var additionalVChild = _step2.value;
+    for (var _iterator = newVChildren.slice(oldVChildren.length)[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      var additionalVChild = _step.value;
       additionalPatches.push(function ($node) {
         $node.appendChild((0, _render.default)(newVChildren));
         return $node;
       });
     }
   } catch (err) {
-    _didIteratorError2 = true;
-    _iteratorError2 = err;
+    _didIteratorError = true;
+    _iteratorError = err;
   } finally {
     try {
-      if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
-        _iterator2.return();
+      if (!_iteratorNormalCompletion && _iterator.return != null) {
+        _iterator.return();
       }
     } finally {
-      if (_didIteratorError2) {
-        throw _iteratorError2;
+      if (_didIteratorError) {
+        throw _iteratorError;
       }
     }
   }
@@ -355,8 +338,8 @@ var diffChildren = function diffChildren(oldVChildren, newVChildren) {
       childPatches[i]($child);
     });
 
-    for (var _i2 = 0; _i2 < additionalPatches.length; _i2++) {
-      var patch = additionalPatches[_i2];
+    for (var _i3 = 0; _i3 < additionalPatches.length; _i3++) {
+      var patch = additionalPatches[_i3];
       patch($parent);
     }
 
@@ -384,7 +367,7 @@ var diff = function diff(oldVTree, newVTree) {
       //1. both trees are string and they have different values
       //2. one of the trees is text node and the other one is elem node
       // Either case render(newVTree)
-      return function ($Node) {
+      return function ($node) {
         var $newNode = (0, _render.default)(newVTree);
         $node.replaceWith($newNode);
         return $newNode;
@@ -463,7 +446,7 @@ var $rootEl = (0, _mount.default)($app, document.getElementById('app'));
 setInterval(function () {
   //count++;
   //const 
-  count = Math.floor(math.random() * 10);
+  count = Math.floor(Math.random() * 10);
   var vNewApp = createVApp(count);
   var patch = (0, _diff.default)(vApp, vNewApp); //$rootEl = mount(render(createVApp(count)), $rootEl);
 
@@ -499,7 +482,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "34487" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "46113" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
