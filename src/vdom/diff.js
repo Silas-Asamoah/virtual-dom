@@ -38,7 +38,7 @@ const diffAttrs = (oldAttrs, newAttrs) => {
         for (const patch of patches){
             patch($node);
         }
-        return $node;
+        //return $node;
     };
 };
 

@@ -312,9 +312,8 @@ var diffAttrs = function diffAttrs(oldAttrs, newAttrs) {
     for (var _i = 0; _i < patches.length; _i++) {
       var patch = patches[_i];
       patch($node);
-    }
+    } //return $node;
 
-    return $node;
   };
 };
 
@@ -431,14 +430,6 @@ var _diff = _interopRequireDefault(require("./vdom/diff"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
-
-function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
-
 function _readOnlyError(name) { throw new Error("\"" + name + "\" is read-only"); }
 
 var createVApp = function createVApp(count) {
@@ -448,15 +439,11 @@ var createVApp = function createVApp(count) {
       dataCount: count
     },
     children: ['The current count is: ', //represents TextNode
-    String(count)].concat(_toConsumableArray(Array.from({
-      length: count
-    }, function () {
-      return (0, _createElement.default)('img', {
-        attrs: {
-          src: 'https://media.giphy.com/media/cuPm4p4pClZVC/giphy.gif'
-        }
-      });
-    })))
+    String(count), (0, _createElement.default)('img', {
+      attrs: {
+        src: 'https://media.giphy.com/media/cuPm4p4pClZVC/giphy.gif'
+      }
+    })]
   });
 }; //represent Element Node
 
@@ -475,7 +462,8 @@ var $app = (0, _render.default)(vApp);
 var $rootEl = (0, _mount.default)($app, document.getElementById('app'));
 setInterval(function () {
   //count++;
-  var n = Math.floor(math.random() * 10);
+  //const 
+  count = Math.floor(math.random() * 10);
   var vNewApp = createVApp(count);
   var patch = (0, _diff.default)(vApp, vNewApp); //$rootEl = mount(render(createVApp(count)), $rootEl);
 
@@ -511,7 +499,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44407" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "34487" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

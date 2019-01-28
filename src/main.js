@@ -12,11 +12,11 @@ const createVApp = count => createElement('div', {
     children: [
         'The current count is: ', //represents TextNode
         String(count),
-        ...Array.from( { length:count }, () =>createElement('img', {
+        createElement('img', {
             attrs: {
                 src: 'https://media.giphy.com/media/cuPm4p4pClZVC/giphy.gif',
             },
-        })), //represents Element Node
+        }), //represents Element Node
     ],
 }); //represent Element Node
 
@@ -31,11 +31,14 @@ const createVApp = count => createElement('div', {
 let count = 0;
 const vApp = createVApp(count);
 const $app = render(vApp);
+
+
 let $rootEl = mount($app, document.getElementById('app'));
 
 setInterval(() => {
     //count++;
-    const n = Math.floor(math.random() * 10);
+    //const 
+    count = Math.floor(math.random() * 10);
     const vNewApp = createVApp(count);
     const patch = diff(vApp, vNewApp);
 
