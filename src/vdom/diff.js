@@ -30,9 +30,37 @@ const diffAttrs = (oldAttrs, newAttrs) => {
 
 
 const diffChildren = (oldVChildren, newVChildren) => {
-    return $node => {
+    const childPatches = [];
+
+    oldVChildren.forEach((oldVChild, i) => {
+        childPatches,push(diff(oldVChild, newVChildren[i]));        
+    });
+
+
+    const additionalPatches = [];
+    for (const additionalVChild of newVChildren.slic(oldVChildren.length)){
+        additionalPatches.push($node => {
+            $node.appendChild(render(newVChildren));
+            return $node;
+        });
+    }
+
+    return $parent => {
+        $parent.childNodes.forEach(($child, i) => {
+            childPatches[i]($child);
+        });
+
+        for (const patch of additionalPatches){
+            patch($parent);
+        }
+
+        return $parent;
+    };
+    /*return $node => {
         return $node;
     };
+
+    */
 };
 
 const diff = (oldVTree, newVTree) => {
